@@ -1,4 +1,3 @@
-# FROM node:12 AS builder
 FROM node:12
 
 WORKDIR /usr/src/app
