@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "workspaces": [
+    "services/*"
+  ],
+  "description": "Sample app using NestJS Microservices architecture.",
+  "author": "Emma Popoola",
+  "license": "MIT"
+}
