@@ -1,32 +1,22 @@
 version: '3'
 
 services:
-  api-gateway:
+  gateway:
     build: ./services/gateway
-    volumes:
-      - .:usr/src/app
-      - /usr/src/app/node_modules
     ports:
-      - 4001:3000
-    command: npm run start:prod
+      - 4000:3000
+    depends_on:
+      - redis
 
   users-service:
-    build: ./services/gateway
-    volumes:
-      - .:usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - 4002:3000
-    command: npm run start:prod
+    build: ./services/users
+    depends_on:
+      - redis
 
   products-service:
-    build: ./services/gateway
-    volumes:
-      - .:usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - 4003:3000
-    command: npm run start:prod
+    build: ./services/products
+    depends_on:
+      - redis
 
   redis:
     image: redis:alpine
