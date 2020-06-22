@@ -1,5 +1,2 @@
-server:
-  port: 3001
-
 jwt:
   secret: Hellowbzksud
