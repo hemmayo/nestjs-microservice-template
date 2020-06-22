@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  api-gateway:
+    build: ./services/gateway
+    volumes:
+      - .:usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4001:3000
+    command: npm run start:prod
+
+  users-service:
+    build: ./services/gateway
+    volumes:
+      - .:usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4002:3000
+    command: npm run start:prod
+
+  products-service:
+    build: ./services/gateway
+    volumes:
+      - .:usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4003:3000
+    command: npm run start:prod
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
