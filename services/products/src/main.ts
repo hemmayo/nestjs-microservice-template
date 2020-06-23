@@ -6,13 +6,12 @@ import * as config from 'config';
 
 const logger = new Logger('Main');
 const redisConfig: any = config.get('redis');
+console.log(redisConfig);
 
 // Create the microservice options object
 const microservicesOptions = {
   transport: Transport.REDIS,
-  options: {
-    url: redisConfig.url,
-  },
+  options: redisConfig,
 };
 
 async function bootstrap() {

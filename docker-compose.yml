@@ -3,20 +3,22 @@ version: '3'
 services:
   gateway:
     build: ./services/gateway
-    hostname: gateway
     ports:
       - 4000:3000
     depends_on:
       - redis
-  # users-service:
-  #   build: ./services/users
-  #   depends_on:
-  #     - redis
-  # products-service:
-  #   build: ./services/products
-  #   depends_on:
-  #     - redis
-  # redis:
-  #   image: redis:alpine
-  #   ports:
-  #     - 6379:6379
+
+  users-service:
+    build: ./services/users
+    depends_on:
+      - redis
+
+  products-service:
+    build: ./services/products
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379

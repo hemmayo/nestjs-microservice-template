@@ -1,4 +1,0 @@
-server:
-  redis:
-    host: redis
-    port: 3002

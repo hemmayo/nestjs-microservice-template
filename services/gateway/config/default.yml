@@ -3,5 +3,3 @@ server:
 
 redis:
   url: redis://localhost:6379
-  host: redis
-  port: 6379

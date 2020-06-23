@@ -14,7 +14,6 @@ export class UsersService {
         .toPromise<boolean>();
       return res;
     } catch (e) {
-      console.log(e);
       throw new GatewayTimeoutException(e.message);
     }
   }
