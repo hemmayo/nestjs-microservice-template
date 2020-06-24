@@ -1,20 +1,18 @@
-import { Injectable, Inject, GatewayTimeoutException } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { timeout } from 'rxjs/operators';
+import { makeRequest } from 'src/utils/make-request';
 
 @Injectable()
 export class UsersService {
   constructor(@Inject('USERS_SERVICE') private client: ClientProxy) {}
 
-  async getUser(data) {
-    try {
-      const res = await this.client
-        .send({ service: 'users', cmd: 'getUser' }, data)
-        .pipe(timeout(5000))
-        .toPromise<boolean>();
-      return res;
-    } catch (e) {
-      throw new GatewayTimeoutException(e.message);
-    }
+  async getUser(id: number) {
+    const res = await makeRequest(
+      this.client,
+      { service: 'users', cmd: 'getUser' },
+      id,
+    );
+
+    return res;
   }
 }

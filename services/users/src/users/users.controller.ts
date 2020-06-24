@@ -7,7 +7,7 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @MessagePattern({ service: 'users', cmd: 'getUser' })
-  getUsers(data) {
-    return this.usersService.getUser(data);
+  getUsers(id) {
+    return this.usersService.getUser(id);
   }
 }

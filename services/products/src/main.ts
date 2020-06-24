@@ -6,7 +6,6 @@ import * as config from 'config';
 
 const logger = new Logger('Main');
 const redisConfig: any = config.get('redis');
-console.log(redisConfig);
 
 // Create the microservice options object
 const microservicesOptions = {
