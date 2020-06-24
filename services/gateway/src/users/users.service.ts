@@ -6,13 +6,12 @@ import { makeRequest } from 'src/utils/make-request';
 export class UsersService {
   constructor(@Inject('USERS_SERVICE') private client: ClientProxy) {}
 
-  async getUser(id: number) {
+  async getUser(email: string) {
     const res = await makeRequest(
       this.client,
       { service: 'users', cmd: 'getUser' },
-      id,
+      email,
     );
-
     return res;
   }
 }

@@ -3,3 +3,8 @@ server:
 
 redis:
   url: redis://localhost:6379
+
+jwt:
+  secret: ktFytfYKTF2ekqg^&
+  signOptions:
+    expiresIn: 60s

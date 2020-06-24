@@ -1,12 +1,14 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Get('/:id')
-  async getUser(@Param('id', ParseIntPipe) id: number) {
-    return await this.usersService.getUser(id);
+  @UseGuards(JwtAuthGuard)
+  @Get('/:email')
+  async getUser(@Param('email') email: string) {
+    return await this.usersService.getUser(email);
   }
 }
