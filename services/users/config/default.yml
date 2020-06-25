@@ -1,0 +1,3 @@
+mongodb:
+  url: mongodb+srv://mongodb:mongodb@users-service-dev-k3jxm.mongodb.net/?retryWrites=true&w=majority
+  database: users
