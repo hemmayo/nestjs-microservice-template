@@ -1,3 +1,2 @@
 mongodb:
-  url: mongodb+srv://mongodb:mongodb@users-service-dev-k3jxm.mongodb.net/?retryWrites=true&w=majority
-  database: users
+  mongoUri: mongodb+srv://mongodb:root@users-service-dev-k3jxm.mongodb.net/users?retryWrites=true&w=majority
