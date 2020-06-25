@@ -10,10 +10,6 @@ export class UsersService {
   ];
 
   getUser(email): User {
-    // if (!this.users[id]) {
-    //   throw new RpcException(new NotFoundException());
-    // }
-
     return this.users.find(user => user.email === email);
   }
 }
