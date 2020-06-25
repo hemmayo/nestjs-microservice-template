@@ -13,11 +13,6 @@ services:
   #   depends_on:
   #     - redis
 
-  # products-service:
-  #   build: ./services/products
-  #   depends_on:
-  #     - redis
-
   redis:
     image: redis:alpine
     ports:
