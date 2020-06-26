@@ -2,6 +2,8 @@ import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { JwtService } from '@nestjs/jwt';
 import { makeRequest } from 'src/utils/make-request';
+import { LoginDto } from './dto/login.dto';
+import { CreateUserDto } from '@microservice-api/shared';
 // import { compareSync } from 'bcrypt';
 
 @Injectable()
@@ -14,7 +16,7 @@ export class AuthService {
   async validateUser(email: string, password: string): Promise<any> {
     const user = await makeRequest(
       this.client,
-      { service: 'users', cmd: 'getUser' },
+      { service: 'users', cmd: 'getUserByEmail' },
       email,
     );
 
@@ -29,7 +31,7 @@ export class AuthService {
     return null;
   }
 
-  async login(user) {
+  async login(user: LoginDto) {
     const payload = { user, sub: user.email };
     delete user.password;
 
@@ -41,5 +43,15 @@ export class AuthService {
 
   async validateToken(jwt: string) {
     return this.jwtService.verify(jwt);
+  }
+
+  async signUp(data: CreateUserDto) {
+    const user = await makeRequest(
+      this.client,
+      { service: 'users', cmd: 'createUser' },
+      data,
+    );
+
+    return this.login(user);
   }
 }

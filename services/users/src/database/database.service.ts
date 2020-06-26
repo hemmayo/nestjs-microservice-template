@@ -10,6 +10,8 @@ export default class MongooseConfigService implements MongooseOptionsFactory {
   createMongooseOptions(): MongooseModuleOptions {
     return {
       uri: config.get('mongodb.mongoUri'),
+      useCreateIndex: true,
+      useNewUrlParser: true,
     };
   }
 }

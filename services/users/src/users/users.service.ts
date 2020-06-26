@@ -1,21 +1,37 @@
-import { Injectable } from '@nestjs/common';
-import { User } from './user.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { UserRepository } from './user.repository';
+import { Injectable, ConflictException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { User } from './schemas/user.schema';
+import { CreateUserDto } from '@microservice-api/shared';
+
+import { Model } from 'mongoose';
+import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(User) private userRepository: UserRepository) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  getUsers(): User[] {
-    return [];
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const user = new this.userModel(createUserDto);
+    const foundUser = await this.getUserByEmail(createUserDto.email);
+
+    if (!foundUser) {
+      return user.save();
+    }
+
+    throw new RpcException(
+      new ConflictException('This email address has already been used'),
+    );
   }
 
-  getUser(email): User {
-    // if (!this.users[id]) {
-    //   throw new RpcException(new NotFoundException());
-    // }
+  async getUsers(): Promise<User[]> {
+    return this.userModel.find().exec();
+  }
 
-    return this.getUsers().find(user => user.email === email);
+  async getUserById(id): Promise<User> {
+    return this.userModel.findById(id);
+  }
+
+  async getUserByEmail(email: string): Promise<User> {
+    return this.userModel.findOne({ email });
   }
 }

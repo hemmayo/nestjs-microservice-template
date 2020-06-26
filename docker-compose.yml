@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  # gateway:
-  #   build: ./services/gateway
-  #   ports:
-  #     - 4000:3000
-  #   depends_on:
-  #     - redis
+  gateway:
+    build: ./services/gateway
+    ports:
+      - 4000:3000
+    depends_on:
+      - redis
 
-  # users-service:
-  #   build: ./services/users
-  #   depends_on:
-  #     - redis
+  users-service:
+    build: ./services/users
+    depends_on:
+      - redis
 
   redis:
     image: redis:alpine

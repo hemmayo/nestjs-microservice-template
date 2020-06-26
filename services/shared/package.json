@@ -1,5 +1,5 @@
 {
-  "name": "shared",
+  "name": "@microservice-api/shared",
   "version": "1.0.0",
   "private": true,
   "author": "Emma Popoola",
@@ -17,7 +17,7 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "class-validator": "^0.10.0",
+    "class-validator": "^0.12.2",
     "dotenv": "^8.1.0",
     "type-graphql": "^0.17.5",
     "typeorm": "^0.2.18"

@@ -6,9 +6,14 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  @Get('')
+  async getUsers() {
+    return this.usersService.getAllUsers();
+  }
+
   @UseGuards(JwtAuthGuard)
-  @Get('/:email')
-  async getUser(@Param('email') email: string) {
-    return await this.usersService.getUser(email);
+  @Get('/:id')
+  async getUserById(@Param('id') id: string) {
+    return this.usersService.getUserById(id);
   }
 }

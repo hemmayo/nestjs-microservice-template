@@ -1,6 +1,7 @@
-import { Controller, Post, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+import { CreateUserDto } from '@microservice-api/shared';
 
 @Controller('auth')
 export class AuthController {
@@ -10,5 +11,10 @@ export class AuthController {
   @Post('login')
   async login(@Request() req) {
     return this.authService.login(req.user);
+  }
+
+  @Post('/signup')
+  async signUp(@Body() createUserDto: CreateUserDto) {
+    return this.authService.signUp(createUserDto);
   }
 }
