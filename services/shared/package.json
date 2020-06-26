@@ -1,7 +1,7 @@
 {
-  "name": "@microservice-api/shared",
+  "name": "@hemmayo/microservices-api-dto",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "author": "Emma Popoola",
   "license": "MIT",
   "main": "./dist/index.js",

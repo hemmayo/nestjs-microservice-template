@@ -3,7 +3,7 @@ import { ClientProxy } from '@nestjs/microservices';
 import { JwtService } from '@nestjs/jwt';
 import { makeRequest } from 'src/utils/make-request';
 import { LoginDto } from './dto/login.dto';
-import { CreateUserDto } from '@microservice-api/shared';
+import { CreateUserDto } from '@hemmayo/microservices-api-dto';
 // import { compareSync } from 'bcrypt';
 
 @Injectable()

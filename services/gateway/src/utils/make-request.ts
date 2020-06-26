@@ -13,7 +13,7 @@ export const makeRequest = async (
   return client
     .send(pattern, payload)
     .pipe(
-      timeout(5000),
+      // timeout(5000),
       catchError(err => {
         const { status, message } = err;
         logger.error(`${err.message}: ${JSON.stringify(pattern) || pattern}`);

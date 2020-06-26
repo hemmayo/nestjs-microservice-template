@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { MessagePattern } from '@nestjs/microservices';
-import { CreateUserDto } from '@microservice-api/shared';
+import { CreateUserDto } from '@hemmayo/microservices-api-dto';
 
 @Controller()
 export class UsersController {

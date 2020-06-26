@@ -6,7 +6,8 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Get('')
+  @UseGuards(JwtAuthGuard)
+  @Get('/')
   async getUsers() {
     return this.usersService.getAllUsers();
   }

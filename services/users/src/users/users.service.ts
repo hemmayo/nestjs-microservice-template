@@ -1,7 +1,7 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
-import { CreateUserDto } from '@microservice-api/shared';
+import { CreateUserDto } from '@hemmayo/microservices-api-dto';
 
 import { Model } from 'mongoose';
 import { RpcException } from '@nestjs/microservices';

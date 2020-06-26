@@ -1,7 +1,7 @@
 import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-import { CreateUserDto } from '@microservice-api/shared';
+import { CreateUserDto } from '@hemmayo/microservices-api-dto';
 
 @Controller('auth')
 export class AuthController {
